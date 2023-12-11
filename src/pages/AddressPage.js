@@ -11,6 +11,7 @@ import { AiFillCheckCircle } from "react-icons/ai";
 import { dbAddressCheck } from "../redux/action/dbAddressCheck";
 import { dbAddressTxsNum } from "../redux/action/dbAdressTxsNum";
 import Pagination from "../components/pagination";
+import config from "../config"
 
 const AddressPage = () => {
   const { params } = useParams();
@@ -25,7 +26,6 @@ const AddressPage = () => {
   } = useSelector((state) => state.addressData);
   const [copyCheckAddress, setCopyCheckAddress] = useState(false);
 
-  // 페이지네이션
   const [query] = useSearchParams();
   const [page, setPage] = useState(Number(query.get("page")) || 1);
   const totalPage = Math.ceil(addressTsxNum / 25);
@@ -71,7 +71,6 @@ const AddressPage = () => {
   };
 
   useEffect(() => {
-    // url로 검색시 예외 처리 추가 반영
     if (Number(query.get("page")) === 0) {
       setPage(1);
     }
@@ -122,29 +121,33 @@ const AddressPage = () => {
               <div className="addressData-col1">
                 <div className="addressData-col1-title">Balance</div>
               </div>
-              <div className="addressData-col2">{accountBalance} GEN</div>
+              <div className="addressData-col2">{accountBalance} {config.currency}</div>
             </div>
           </div>
-          {/* <div className="addressDataInfo2">
-                        <div className="addressData-row">
-                            <div className="addressData-col1">
-                                <div className="addressData-col1-title">
-                                    ???
-                                </div>
-                            </div>
-                            <div className="addressData-col2">
-                                여긴 뭐 넣을까
-                            </div>
-                        </div>
-                        <div className="addressData-row">
-                            <div className="addressData-col1">
-                                <div className="addressData-col1-title">
-                                    ???
-                                </div>
-                            </div>
-                            <div className="addressData-col2">test</div>
-                        </div>
-                    </div> */}
+          <div className="addressDataInfo2">
+            {/*
+            <div className="addressData-row">
+                <div className="addressData-col1">
+                    <div className="addressData-col1-title">
+                        Some col
+                    </div>
+                </div>
+                <div className="addressData-col2">
+                    Some value
+                </div>
+            </div>
+            <div className="addressData-row">
+                <div className="addressData-col1">
+                    <div className="addressData-col1-title">
+                        Some col
+                    </div>
+                </div>
+                <div className="addressData-col2">
+                  Some value
+                </div>
+            </div>
+            */}
+          </div>
         </div>
       </div>
       {/* === Table Data === */}
@@ -210,7 +213,7 @@ const AddressPage = () => {
                         </td>
                         <td className="td-right">
                           {parseInt(data.value, 16) / 10 ** 18}
-                          &nbsp;GEN
+                          &nbsp;{config.currency}
                         </td>
                       </tr>
                     );

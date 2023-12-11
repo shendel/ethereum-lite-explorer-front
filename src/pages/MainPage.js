@@ -10,6 +10,7 @@ import { getTokenData } from "../redux/action/getTokenData";
 import { Chart } from "../components/_index";
 import { dbAddressArr } from "../redux/action/dbAddressArr";
 import { dbChartWeeklyTxsByDate } from "../redux/action/dbChartWeeklyByDate";
+import config from "../config"
 
 const Main = () => {
   const dispatch = useDispatch();
@@ -126,7 +127,7 @@ const Main = () => {
           <div className="blockInfoSection1">
             <div className="block-col1">
               <div className="block-col1-row1">
-                <h1>GEN Price</h1>
+                <h1>{config.currency} Price</h1>
                 {tokenData != null ? <h3>$ {tokenData.last}</h3> : null}
               </div>
               <div className="block-col1-row2">
@@ -273,13 +274,13 @@ const Main = () => {
                           <div className="triangle-main"> </div>
                           {(parseInt(datas.value, 16) / 10 ** 18).toFixed(4) ==
                           0 ? (
-                            <p>0 GEN</p>
+                            <p>0 {config.currency}</p>
                           ) : (
                             <p>
                               {(parseInt(datas.value, 16) / 10 ** 18).toFixed(
                                 4
                               )}{" "}
-                              GEN
+                              {config.currency}
                             </p>
                           )}
                         </div>

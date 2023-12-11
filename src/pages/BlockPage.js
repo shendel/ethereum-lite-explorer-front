@@ -116,17 +116,6 @@ const BlockPage = () => {
                 </div>
               </div>
 
-              {/* <div className="blockData-row">
-                            <div className="blockData-col1">
-                                <div className="blockData-col1-title">
-                                    Uncles Reward
-                                </div>
-                            </div>
-                            <div className="blockData-col2">
-                                {parseInt(blockInfo.uncles, 16).toFixed(3)} GEN
-                            </div>
-                        </div> */}
-
               <div className="blockData-row">
                 <div className="blockData-col1">
                   <div className="blockData-col1-title">Difficulty</div>

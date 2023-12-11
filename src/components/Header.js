@@ -4,6 +4,7 @@ import "./Header.css";
 import { Generation_logo } from "../images/_index";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { Link, useParams } from "react-router-dom";
+import config from "../config"
 
 const Header = () => {
   const [toggleOn, setToggleOn] = useState(false);
@@ -31,12 +32,7 @@ const Header = () => {
     <header className="header">
       <div className="logo">
         <Link to="/">
-          <img
-            style={{ width: 210, height: 36 }}
-            alt="Generation"
-            src={Generation_logo}
-            onClick={() => toggleBtnOff()}
-          ></img>
+          [LOGO]
         </Link>
       </div>
       <ul className="navBar">
@@ -64,7 +60,7 @@ const Header = () => {
           <h2>|</h2>
         </li>
         <li>
-          <h3>Leo</h3>
+          <h3>{config.network}</h3>
         </li>
       </ul>
 
@@ -94,7 +90,7 @@ const Header = () => {
         </ul>
       ) : null}
       <div className="navBar_toggle" onClick={() => toggleBtn()}>
-        <h3 className="network">Leo</h3>
+        <h3 className="network">{config.network}</h3>
         <GiHamburgerMenu size={30} />
       </div>
     </header>

@@ -7,6 +7,7 @@ import { dbAllTxs } from "../redux/action/dbAllTxs";
 import { dbTotalTxsNum } from "../redux/action/dbTotalTxsNum";
 import Pagination from "../components/pagination";
 import Select from "../components/select";
+import config from "../config"
 
 const AllTransactionPage = () => {
   const dispatch = useDispatch();
@@ -130,7 +131,7 @@ const AllTransactionPage = () => {
                         </span>
                       </td>
                       <td className="td-right">
-                        {parseInt(data.value, 16) / 10 ** 18} GEN
+                        {parseInt(data.value, 16) / 10 ** 18} {config.currency}
                       </td>
                     </tr>
                   );

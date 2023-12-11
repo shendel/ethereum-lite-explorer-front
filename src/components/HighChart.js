@@ -5,9 +5,7 @@ const HighChart = ({ data, startDate, endDate }) => {
   const dayArray = [];
   const txLengthArray = [];
 
-  // chart데이터가 있을 경우에 실행
   if (data) {
-    // 시작날짜와 끝날짜가 있을 경우 원하는 범위에 데이터를 가공하는 로직
     if ((startDate, endDate)) {
       let startDateIndex = 0;
       let endDateIndex = 0;
@@ -32,7 +30,6 @@ const HighChart = ({ data, startDate, endDate }) => {
     }
   }
 
-  // highchart 옵션부분
   const options = {
     chart: {
       zoomType: "x",

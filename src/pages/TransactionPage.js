@@ -12,6 +12,7 @@ import { NullTxsData } from "../components/_index";
 import { dbLatestBlocks } from "../redux/action/dbLatestBlocks";
 import { ethers } from "ethers";
 import DetailMoveBtn from "../components/detailMoveBtn";
+import config from "../config"
 
 const TransactionPage = () => {
   const { params } = useParams();
@@ -404,7 +405,7 @@ const TransactionPage = () => {
                   <div className="blockData-col1-title">Value</div>
                 </div>
                 <div className="blockData-col2">
-                  {parseInt(txDbInfo.value, 16) / 10 ** 18} GEN
+                  {parseInt(txDbInfo.value, 16) / 10 ** 18} {config.currency}
                 </div>
               </div>
 
@@ -433,50 +434,42 @@ const TransactionPage = () => {
                   ) : (
                     <>
                       <div className="inputData-table">
-                        {txReceiptInfo.logs[0] != null &&
-                        txReceiptInfo.logs[0].topics[0] ==
-                          "0x47cee97cb7acd717b3c0aa1435d004cd5b3c8c57d70dbceb4e4458bbd60e39d4" ? (
-                          <div className="airdrop">
-                            20 GEN Airdrop Completed
-                          </div>
-                        ) : (
-                          <table>
-                            <thead>
-                              <tr>
-                                <th width={50}>#</th>
-                                <th width={100}>name</th>
-                                <th width={100}>type</th>
-                                <th width={400}>data</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              {txDecodeInputData != ""
-                                ? txDecodeInputData.params.map(
-                                    (data, index) => {
-                                      return (
-                                        <tr key={index}>
-                                          <td width={50}>{index}</td>
-                                          <td width={100}>{data.name}</td>
-                                          <td width={100}>{data.type}</td>
-                                          {data.type === "bool" ? (
-                                            <>
-                                              {data.value ? (
-                                                <td width={400}>true</td>
-                                              ) : (
-                                                <td width={400}>false</td>
-                                              )}
-                                            </>
-                                          ) : (
-                                            <td width={400}>{data.value}</td>
-                                          )}
-                                        </tr>
-                                      );
-                                    }
-                                  )
-                                : null}
-                            </tbody>
-                          </table>
-                        )}
+                        <table>
+                          <thead>
+                            <tr>
+                              <th width={50}>#</th>
+                              <th width={100}>name</th>
+                              <th width={100}>type</th>
+                              <th width={400}>data</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {txDecodeInputData != ""
+                              ? txDecodeInputData.params.map(
+                                  (data, index) => {
+                                    return (
+                                      <tr key={index}>
+                                        <td width={50}>{index}</td>
+                                        <td width={100}>{data.name}</td>
+                                        <td width={100}>{data.type}</td>
+                                        {data.type === "bool" ? (
+                                          <>
+                                            {data.value ? (
+                                              <td width={400}>true</td>
+                                            ) : (
+                                              <td width={400}>false</td>
+                                            )}
+                                          </>
+                                        ) : (
+                                          <td width={400}>{data.value}</td>
+                                        )}
+                                      </tr>
+                                    );
+                                  }
+                                )
+                              : null}
+                          </tbody>
+                        </table>
                       </div>
                       <button
                         className="inputData-button"

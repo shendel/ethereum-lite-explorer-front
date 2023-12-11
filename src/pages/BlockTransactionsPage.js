@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
 import { dbBlockTxs } from '../redux/action/dbBlockTxs'
 import { BiArrowFromLeft } from "react-icons/bi"
+import config from "../config"
 
 const BlockTransactionsPage = () => {
     //console.log(window.location.search)
@@ -90,7 +91,7 @@ return (
                                 <td className='td-center'>
                                     <span onClick={(e)=>goToToAddress(data.toAddress, e)}>{(data.toAddress).substr(0, 20)}...</span>
                                 </td>
-                                <td className='td-right'>{parseInt(data.value, 16)/10**18} GEN</td>
+                                <td className='td-right'>{parseInt(data.value, 16)/10**18} {config.currency}</td>
                             </tr>
                         })
                         : null

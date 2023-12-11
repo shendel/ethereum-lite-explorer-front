@@ -6,6 +6,7 @@ import { dbAllBlocks } from "../redux/action/dbAllBlocks";
 import { getBalance } from "../redux/action/getNumberOfBlock";
 import Pagination from "../components/pagination";
 import Select from "../components/select";
+import config from "../config"
 
 const AllBlocksPage = () => {
   const dispatch = useDispatch();
@@ -86,7 +87,7 @@ const AllBlocksPage = () => {
                       <td className="td-center">{allBlocksTimeago[index]}</td>
                       <td className="td-center">{data.transaction_length}</td>
                       <td className="td-left">{data.blockhash}</td>
-                      <td className="td-right">0 GEN</td>
+                      <td className="td-right">0 {config.currency}</td>
                     </tr>
                   );
                 })
