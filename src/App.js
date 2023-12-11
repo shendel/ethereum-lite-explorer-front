@@ -1,4 +1,4 @@
-// eslint-disable-next-line
+/* eslint-disable no-use-before-define */
 import { Routes, Route } from "react-router-dom";
 import {
   Main,

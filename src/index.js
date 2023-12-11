@@ -9,10 +9,11 @@ import { ScrollTop } from "./components/_index";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-console.log = () => {}
-console.error = () => {}
+//console.log = () => {}
+//console.error = () => {}
 
 root.render(
+
   <Provider store={store}>
     <BrowserRouter>
       <ScrollTop />
@@ -20,3 +21,4 @@ root.render(
     </BrowserRouter>
   </Provider>
 );
+
